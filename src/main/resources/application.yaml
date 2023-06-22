@@ -1,0 +1,23 @@
+default-database: app_db
+jwt:
+  secret: VmFndWVseS1TYWx0eS1PcmJpdC01MzY1LTg4MjUtMDQ0MS0wNzQ0LTAxOTUtNDA2Ni0wOTgyLTk1MDgtNTk1OA
+  validity: 1
+spring:
+  profiles: dev
+  database-url: jdbc:mysql://127.0.01:3306
+  datasource:
+    url: jdbc:mysql://127.0.01:3306/${default-database}?createDatabaseIfNotExist=true
+    username: root
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+  sql:
+    init:
+      mode: always
+logging:
+  config: classpath:logging-config\logback-dev.xml
+---
+spring:
+  profiles: prod
+  sql:
+    init:
+      mode: always
